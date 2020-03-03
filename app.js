@@ -1,14 +1,12 @@
 import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
+import users from './server/user';
 
 const app = express();
 
 app.use(cors());
-
-app.get('/', (rew,res) => {
-   res.send('Hello Express');
-});
+app.use(users);
 
 app.listen(process.env.PORT, () =>
     console.log('ESM 6 running on node!'),
