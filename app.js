@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import initPgClient from './db';
 import {Client} from 'pg';
 import http from 'http';
+import {v4 as uuidv4} from 'uuid';
 
 const {pgUser, pgHost, pgDatabase, pgPort, pgPassword} = initPgClient();
 
@@ -22,7 +23,7 @@ pgClient
     .catch(((err) => {
         console.log(` Failed to connect db: ${err}`);
         process.exit(1);
-}));
+    }));
 
 const app = express();
 
@@ -59,19 +60,20 @@ app.get('/v1/items', async (req, res) => {
 
 app.post('/v1/items', async (req, res) => {
     const {item_name} = req.body;
-    const id = uuid();
-    const item = await pgClient
-        .query(
-            `INSERT INTO items (id, item_name, complete) VALUES 
-    ($1, $2, $3)`,
-            [id, item_name, false]
-        )
-        .catch(e => {
+    const id = uuidv4();
+    await pgClient.query(
+        `INSERT INTO items (id, item_name, complete) VALUES 
+    ($1, $2, $3)`, [id, item_name, false]
+    )
+        .catch(err => {
+            console.log(err);
             res
                 .status(500)
-                .send('Encountered an internal error when creating an item');
+                .send(`Encountered an internal error when creating an item: ${err}`);
         });
-    res.status(201).send(`Item created with ID: ${id}`);
+    res
+        .status(201)
+        .send(`Item created with ID: ${id}`);
 });
 
 const server = http.createServer(app);
