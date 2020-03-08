@@ -1,6 +1,24 @@
 version: '3'
 services:
-  user-api:
-    build: .
+  auth-db:
+    image: postgres:9.4
+    container_name: auth-db
     ports:
-    - '8001:3001'
+      - "${INTERN_DB_PORT}:${EXTERN_DB_PORT}"
+    restart: on-failure
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/dat
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_DATABASE}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DATABASE: ${POSTGRES_PASSWORD}
+
+  auth-api:
+    env_file: .env
+    container_name: auth-api
+    build: .
+    depends_on:
+      - auth-db
+    restart: on-failure
+    ports:
+      - ${EXTERN_AUTH_API_PORT}:${INTERN_AUTH_API_PORT}
