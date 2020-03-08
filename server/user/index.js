@@ -5,5 +5,4 @@ const users = express();
 
 users.use(userRouter);
 
-
 export  default users;

@@ -6,10 +6,7 @@ const {describe: describe1, it: it1} = mocha;
 const describe = describe1;
 const it = it1;
 
-// const chance = Chance();
-
 describe('userRouter', () => {
-
 
     it('should return Hello Tester when called', () => {
         let req = {},

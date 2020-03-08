@@ -7,12 +7,22 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "mocha": "^7.1.0",
-    "passport": "^0.4.1"
+    "oauth2orize": "^1.11.0",
+    "passport": "^0.4.1",
+    "passport-bearer-strategy": "^1.0.1",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "passport-oauth2-client-password": "^0.1.2",
+    "pg": "^7.18.2",
+    "promise": "^8.1.0",
+    "uuid": "^7.0.1"
   },
   "scripts": {
     "start": "node index.js",
