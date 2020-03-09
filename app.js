@@ -3,7 +3,7 @@ import cors from 'cors';
 import express from 'express';
 import users from './server/user';
 import bodyParser from 'body-parser';
-import initPgClient from './db';
+import initPgClient from './db/pg-query';
 import {Client} from 'pg';
 import http from 'http';
 import {v4 as uuidv4} from 'uuid';
