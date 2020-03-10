@@ -1,12 +1,16 @@
 import mocha from 'mocha/';
 import sinon from 'sinon';
 import Chance from 'chance';
-import {expect} from 'chai';
+import chai from "chai";
+import chaiAsPromised from 'chai-as-promised';
+
 
 import pgPool from '../../db/pg-pool';
-import db  from  '../../db/pg-query';
+import pgQuery  from  '../../db/pg-query';
 const chance = new Chance();
+chai.use(chaiAsPromised);
 
+const expect = chai.expect;
 describe('when pgPool connects successfully', () => {
        let expectedClient,
            expectedQuery,
@@ -17,18 +21,14 @@ describe('when pgPool connects successfully', () => {
           [expectedParams] = chance.n(() =>
               chance.string(), chance.natural({min: 1, max: 10}));
           expectedClient = {
-              query: ()=>{}
+              query: ()=>{},
+              then: () =>{}
            };
        });
 
        describe('when query is successful', async () => {
-        it('should return a response', async () => {
-            const mockClient = sinon.mock(expectedClient);
-           sinon.stub(pgPool, 'connect').resolves(expectedClient);
+        it('should return a response', async (done) => {
 
-            const actualResponse = await db.query(expectedQuery, expectedParams);
-           expect(actualResponse).to.not.null;
-           console.log(actualResponse);
         });
        });
    });
