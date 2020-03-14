@@ -133,6 +133,7 @@ dist
 # Vs Code files
 .vscode-test
 .vscode
+.graphqlrc 
 
 # Jetbrains IDE files
 .idea/
