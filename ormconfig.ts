@@ -1,15 +1,21 @@
 import {ConnectionOptions} from 'typeorm';
-import dotenv from 'dotenv';
 
-dotenv.config();
+import DataBaseConfig from './src/config'
+
+const {
+  pgHost,
+  pgDatabase,
+  pgPort,
+  pgUsername,
+  pgPassword } = DataBaseConfig;
 
 const config: ConnectionOptions = {
   type: 'postgres',
-  host: process.env.PGHOST,
-  port: Number(process.env.PGPORT),
-  username: process.env.PGUSER,
-  password: process.env.PGPASSWORD,
-  database: process.env.PGDATABASE,
+  host: pgHost,
+  port: Number(pgPort),
+  username: pgUsername,
+  password: pgPassword,
+  database: pgDatabase,
   entities: [
     __dirname + '/../**/*.entity{.ts, .js}',
   ],

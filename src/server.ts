@@ -7,7 +7,7 @@ import middleware from "./middleware";
 import {AuthConnection} from './db/auth-connection-manager';
 
 // const connection = AuthConnection();
-// const connection = AuthConnection().catch((err: Error) => console.log(`error at top level connection ${err}`));
+const connection =  AuthConnection().catch((err: Error) => console.log(`error at top level connection ${err}`));
 const router = express();
 applyMiddleware(middleware, router);
 applyRoutes(routes, router);

@@ -11,8 +11,8 @@ RUN yarn
 COPY . .
 RUN yarn build-docker
 
-COPY ./dist ./dist
+COPY ./dist .
 
 EXPOSE 5000
 
-CMD ["node", "./dist/server.js"]
+CMD ["node","./dist/src/server.js"]
