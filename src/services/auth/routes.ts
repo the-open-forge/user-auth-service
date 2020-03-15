@@ -15,12 +15,16 @@ export default [
     path: "/users/first",
     method: "get",
     handler: async (req: Request, res: Response) => {
-      const user = await findTopUser().then();
+      const user = await findTopUser()
+        .then(topUser => topUser)
+        .catch((err: Error) => `failed at routing level ${err}`);
 
-      getConnection("default").close();
+      getConnection()
+        .close()
+        .catch((err: Error) => console.log(`failed to disconnect ${err}`));
 
       user
-        ? res.status(201).send(user)
+        ? res.status(201).send(JSON.stringify(user))
         : res.status(404).send(`failed to fetch user`);
     }
   }

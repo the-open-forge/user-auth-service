@@ -134,6 +134,7 @@ dist
 .vscode-test
 .vscode
 .graphqlrc 
+.history
 
 # Jetbrains IDE files
 .idea/

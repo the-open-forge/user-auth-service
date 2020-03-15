@@ -9,7 +9,10 @@ COPY ./yarn.lock .
 RUN yarn
 
 COPY . .
+RUN yarn build-docker
+
+COPY ./dist ./dist
 
 EXPOSE 5000
 
-CMD ["node", "-r", "dotenv/config", "pg-query.js"]
+CMD ["node", "./dist/server.js"]

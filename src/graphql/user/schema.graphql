@@ -1,9 +1,0 @@
-type User {
-  id: Int,
-  firstname: string,
-
-}
-
-type Query {
-  getUser: (id: Int, firstname: string): User
-}

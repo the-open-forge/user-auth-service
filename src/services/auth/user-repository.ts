@@ -4,16 +4,27 @@ import { Users, UserEntity } from "./user-entity";
 let userRepository: Repository<Users>;
 
 const init = () => {
-  const connection = getConnection('userConnection');
+  const connection = getConnection();
   userRepository = connection.getRepository<Users>(UserEntity);
 };
 
-export const findTopUser = async () => {
-  if (userRepository === undefined) {
+const initIfUndefined = () => {
+  if(userRepository === undefined) {
     init();
   }
+}
+export const findTopUser = async () => {
+ initIfUndefined();
 
   return await userRepository
     .findOne(1)
-    .then(user => user);
+    // .then(user => user)
+    .catch((err: Error) => console.log(`Error at database level: ${err}`));
+};
+
+export const addUser = async(newUser: Users) => {
+  initIfUndefined();
+  return await userRepository
+    .save(newUser)
+    .catch((err: Error) => console.log(`Error at database level: ${err}`));
 };

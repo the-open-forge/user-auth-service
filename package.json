@@ -1,5 +1,19 @@
 {
+  "name": "user-auth-service",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Auth Service for next-episode",
+  "license": "MIT",
   "author": "Trevor Henderson",
+  "main": "server.js",
+  "scripts": {
+    "dev": "tsc-watch --onSuccess \"node ./dist/src/server.js\"",
+    "end-local": "./scripts/stop-and-clean-up-docker-local.sh",
+    "run-local": "./scripts/run-docker-local.sh",
+    "start": "yarn build && \"node ./dist/src/server.js\"",
+    "build": "tsc",
+    "build-docker": "tsc --build tsconfig.json"
+  },
   "dependencies": {
     "@types/bluebird": "^3.5.30",
     "@types/body-parser": "^1.19.0",
@@ -8,6 +22,7 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.3",
     "@types/node": "^13.9.0",
+    "@types/pg": "^7.14.3",
     "@types/sequelize": "^4.28.8",
     "@types/validator": "^12.0.1",
     "apollo-datasource-rest": "^0.8.0",
@@ -18,7 +33,6 @@
     "cors": "^2.8.5",
     "dataloader-sequelize": "^2.1.2",
     "dotenv": "^8.2.0",
-    "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^14.6.0",
@@ -37,29 +51,14 @@
     "relay": "^0.8.0-1",
     "sequelize": "^5.21.5",
     "sequelize-typescript": "^1.1.0",
+    "tsc": "^1.20150623.0",
     "tsc-watch": "^4.2.3",
     "type-graphql": "^0.17.6",
     "typeorm": "^0.2.24",
     "typescript": "^3.8.3",
     "uuid": "^7.0.1"
   },
-  "description": "Auth Service for next-episode",
   "devDependencies": {
-    "@types/esm": "3.2.0",
     "chance": "^1.1.4"
-  },
-  "esm": {
-    "await": true
-  },
-  "license": "MIT",
-  "main": "index.js",
-  "name": "user-auth-service",
-  "private": false,
-  "scripts": {
-    "start": "node index.js",
-    "run-local": "./scripts/run-docker-local.sh",
-    "end-local": "./scripts/stop-and-clean-up-docker-local.sh",
-    "dev": "tsc-watch --onSuccess \"node ./dist/server.js\""
-  },
-  "version": "1.0.0"
+  }
 }
