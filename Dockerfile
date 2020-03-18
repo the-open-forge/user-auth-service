@@ -9,10 +9,12 @@ COPY ./yarn.lock .
 RUN yarn
 
 COPY . .
-RUN yarn build-docker
 
-COPY ./dist .
+RUN yarn build
+
+COPY . .
+# COPY dist .
 
 EXPOSE 5000
 
-CMD ["node","./dist/src/server.js"]
+CMD ["node", "./dist/src/server.js"]

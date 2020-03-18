@@ -22,7 +22,7 @@ yarn.lock
 
 
 # Coveralls
-coverage
+coverage/
 
 # Benchmarking
 benchmarks/graphs
@@ -97,7 +97,7 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variables file
-.env*
+*.env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -107,7 +107,7 @@ web_modules/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+dist/
 
 # Gatsby files
 .cache/
@@ -124,7 +124,7 @@ dist
 # FuseBox cache
 .fusebox/
 
-# DynamoDB Local files 
+# DynamoDB Local files
 .dynamodb/
 
 # TernJS port file
@@ -133,7 +133,7 @@ dist
 # Vs Code files
 .vscode-test
 .vscode
-.graphqlrc 
+.graphqlrc
 .history
 
 # Jetbrains IDE files

@@ -1,6 +1,9 @@
 import {ConnectionOptions} from 'typeorm';
 
 import DataBaseConfig from './src/config'
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
+import { PostgresConnectionCredentialsOptions } from 'typeorm/driver/postgres/PostgresConnectionCredentialsOptions';
+
 
 const {
   pgHost,
@@ -9,17 +12,16 @@ const {
   pgUsername,
   pgPassword } = DataBaseConfig;
 
-const config: ConnectionOptions = {
-  type: 'postgres',
-  host: pgHost,
+const typeOrmConfig: ConnectionOptions = {
+  type: "postgres",
+  host: "auth-db",
   port: Number(pgPort),
   username: pgUsername,
   password: pgPassword,
-  database: pgDatabase,
-  entities: [
-    __dirname + '/../**/*.entity{.ts, .js}',
-  ],
-  synchronize: true,
+  database: pgDatabase
+
+  // entities: [__dirname + "/../**/*.entity{.ts, .js}"],
+  // synchronize: true
 };
 
-export default config;
+export default typeOrmConfig;

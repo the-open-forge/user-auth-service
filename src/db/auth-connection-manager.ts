@@ -1,11 +1,14 @@
-import { Connection, createConnection, getConnectionOptions } from "typeorm";
+import { Connection, createConnection, getConnectionOptions, ConnectionOptions } from "typeorm";
 import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions";
 import { PostgresConnectionCredentialsOptions } from "typeorm/driver/postgres/PostgresConnectionCredentialsOptions";
 
+import typeOrmConfig from '../../ormconfig'
+
 export const AuthConnection = async () => {
   try {
-    const connectOptions = await getConnectionOptions();
-    await createConnection(connectOptions);
+    console.log('typeOrmConfig:', typeOrmConfig);
+    return await createConnection(typeOrmConfig)
+    // .then((connection: Connection) => connection)
   } catch (e) {
     console.log(`error connecting at lower level: ${e}`);
   }

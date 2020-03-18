@@ -3,9 +3,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const DataBaseConfig = {
-  pgHost: process.env.PGHOST,
-  pgPort: Number(process.env.PGPORT),
-  pgUsername: process.env.PGUSER,
-  pgPassword: process.env.PGPASSWORD,
-  pgDatabase: process.env.PGDATABASE
+    pgHost: process.env.TYPEORM_HOST,
+    pgPort: Number(process.env.TYPEORM_PORT),
+    pgUsername: process.env.TYPEORM_USERNAME,
+    pgPassword: process.env.TYPEORM_PASSWORD,
+    pgDatabase: process.env.TYPEORM_CONNECT
 };

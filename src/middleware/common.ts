@@ -7,10 +7,11 @@ export const handleCors = (router: Router) =>
   router.use(cors({ credentials: true, origin: true }));
 
 export const handleBodyRequestParsing = (router: Router) => {
-  router.use(parser.urlencoded({ extended: true }));
+  router.use(parser.urlencoded({extended: true }));
   router.use(parser.json());
+  return router;
 };
 
-export const handleCompression = (router: Router) => {
+export const handleCompression = (router: Router) =>
   router.use(compression());
-};
+
