@@ -1,11 +1,11 @@
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 
-dotenv.config();
+// dotenv.config();
 
-export const DataBaseConfig = {
-    pgHost: process.env.TYPEORM_HOST,
-    pgPort: Number(process.env.TYPEORM_PORT),
-    pgUsername: process.env.TYPEORM_USERNAME,
-    pgPassword: process.env.TYPEORM_PASSWORD,
-    pgDatabase: process.env.TYPEORM_CONNECT
-};
+// export const DataBaseConfig = {
+//     pgHost: process.env.TYPEORM_HOST,
+//     pgPort: Number(process.env.TYPEORM_PORT),
+//     pgUsername: process.env.TYPEORM_USERNAME,
+//     pgPassword: process.env.TYPEORM_PASSWORD,
+//     pgDatabase: process.env.TYPEORM_CONNECT
+// };
