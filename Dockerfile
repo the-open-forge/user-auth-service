@@ -15,6 +15,6 @@ RUN yarn build
 COPY . .
 # COPY dist .
 
-EXPOSE 5000
+EXPOSE 3000
 
 CMD ["node", "./dist/src/server.js"]

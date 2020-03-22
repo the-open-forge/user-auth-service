@@ -1,11 +1,13 @@
-// import dotenv from "dotenv";
+import dotenv from "dotenv";
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 
-// dotenv.config();
+dotenv.config();
 
-// export const DataBaseConfig = {
-//     pgHost: process.env.TYPEORM_HOST,
-//     pgPort: Number(process.env.TYPEORM_PORT),
-//     pgUsername: process.env.TYPEORM_USERNAME,
-//     pgPassword: process.env.TYPEORM_PASSWORD,
-//     pgDatabase: process.env.TYPEORM_CONNECT
-// };
+export const DataBaseConfig:PostgresConnectionOptions = {
+    type: "postgres",
+    host: process.env.TYPEORM_HOST,
+    port: Number(process.env.TYPEORM_PORT),
+    username: process.env.TYPEORM_USERNAME,
+    password: process.env.TYPEORM_PASSWORD,
+    database: process.env.TYPEORM_CONNECT
+};

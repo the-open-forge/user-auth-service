@@ -3,13 +3,17 @@ import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConne
 import { PostgresConnectionCredentialsOptions } from "typeorm/driver/postgres/PostgresConnectionCredentialsOptions";
 
 // import typeOrmConfig from '../../ormconfig'
+import DataBaseConfig from '../config/index';
+import { connect } from "http2";
 
 export const AuthConnection = async () => {
   try {
-    // console.log('typeOrmConfig:', typeOrmConfig);
-    return await createConnection();
-    // .then((connection: Connection) => connection)
-  } catch (e) {
-    console.log(`error connecting at lower level: ${e}`);
+    console.log('Config:', DataBaseConfig);
+   return await createConnection(DataBaseConfig)
+  //  return await createConnection(DataBaseConfig)
+    .then((connection: Connection) => connection)
+    .catch((err: Error) => console.log(`Error ${err}`));
+  } catch (err) {
+    console.log(`error connecting at lower level: ${err}`);
   }
 };

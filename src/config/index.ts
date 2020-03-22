@@ -1,3 +1,3 @@
-// import { DataBaseConfig } from "./db-config";
+import { DataBaseConfig } from "./db-config";
 
-// export default DataBaseConfig;
+export default DataBaseConfig;
