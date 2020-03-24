@@ -8,6 +8,5 @@ export const helloTester = (req, res) => {
 
 userRouter.get('/', helloTester);
 
-export {
-    userRouter,
-};
+export default userRouter;
+

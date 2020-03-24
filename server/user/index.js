@@ -1,8 +1,7 @@
 import express from 'express';
-import {userRouter} from './user-routes';
+import userRoute from './user-routes';
 
 const users = express();
-
-users.use(userRouter);
+users.use(userRoute);
 
 export  default users;
