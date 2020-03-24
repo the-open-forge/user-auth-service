@@ -18,6 +18,12 @@
     "promise": "^8.1.0",
     "uuid": "^7.0.1"
   },
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha ./test/**/*.js --require esm",
+    "run-local": "./scripts/run-docker-local.sh",
+    "end-local": "./scripts/stop-and-clean-up-docker-local.sh" 
+  },
   "description": "Auth Service for next-episode",
   "devDependencies": {
     "@types/esm": "3.2.0",
@@ -33,11 +39,5 @@
   "main": "index.js",
   "name": "user-auth-service",
   "private": false,
-  "scripts": {
-    "start": "node index.js",
-    "test": "mocha ./test/**/*.js --require esm",
-    "run-local": "./scripts/run-docker-local.sh",
-    "end-local": "./scripts/stop-and-clean-up-docker-local.sh"
-  },
   "version": "1.0.0"
 }

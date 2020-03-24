@@ -81,9 +81,8 @@ app.post('/v1/items', async (req, res) => {
 });
 
 const server = http.createServer(app);
-server.listen(5000, () => {
-    // console.log(pgClient);
 
+server.listen(5000, () => {
     console.log('ESM 6 running on node!');
 });
 

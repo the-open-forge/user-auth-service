@@ -9,3 +9,4 @@ export const helloTester = (req, res) => {
 userRouter.get('/', helloTester);
 
 export default userRouter;
+
