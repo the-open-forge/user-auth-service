@@ -3,14 +3,14 @@ import cors from 'cors';
 import express from 'express';
 import users from './server/user';
 import bodyParser from 'body-parser';
-import initPgClient from './db/pg-query';
+import DbConfig from './db/config/db-config'
 import {Client} from 'pg';
 import http from 'http';
 import {v4 as uuidv4} from 'uuid';
 
-const {pgUser, pgHost, pgDatabase, pgPort, pgPassword} = initPgClient();
+const {pgUser, pgHost, pgDatabase, pgPort, pgPassword} = DbConfig;
 
-let connectionString = `${pgUser}:${pgPassword}@${pgHost}:${pgPort}/${pgDatabase}`;
+let connectionString = `postgresql://${pgUser}:${pgPassword}@${pgHost}:${pgPort}/${pgDatabase}`;
 console.log(connectionString);
 
 let pgClient = new Client({
@@ -58,6 +58,10 @@ app.get('/v1/items', async (req, res) => {
     res.status(200).send(rows);
 });
 
+app.get('/', async (req, res) => {
+    res.send('Im not dead');
+});
+
 app.post('/v1/items', async (req, res) => {
     const {item_name} = req.body;
     const id = uuidv4();
@@ -77,8 +81,8 @@ app.post('/v1/items', async (req, res) => {
 });
 
 const server = http.createServer(app);
-server.listen(process.env.INTERN_AUTH_API_PORT, () => {
-    console.log(pgClient);
+server.listen(5000, () => {
+    // console.log(pgClient);
 
     console.log('ESM 6 running on node!');
 });

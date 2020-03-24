@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["node", "-r", "dotenv/config", "pg-query.js"]
+CMD ["node", "-r", "dotenv/config", "index.js"]
