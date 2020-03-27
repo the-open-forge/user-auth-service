@@ -13,7 +13,7 @@ COPY . .
 RUN yarn build
 
 # COPY . .
-COPY dist .
+COPY ./dist .
 
 EXPOSE 5000
 

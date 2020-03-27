@@ -1,16 +1,11 @@
-import cors from 'cors';
 import express from 'express';
-import users from './services';
-import bodyParser from 'body-parser';
 import DbConfig from './db/'
 import {Client} from 'pg';
 import http from 'http';
 import {v4 as uuidv4} from 'uuid';
-import { applyMiddleware, applyRoutes } from './utlis/';
+import { applyMiddleware, applyRoutes } from './utils';
 import middleware from './middleware';
-import controllers from './controllers';
-
-
+import routes from './routes/';
 
 //database setup with global pooling
 const {pgUser, pgHost, pgDatabase, pgPort, pgPassword} = DbConfig;
@@ -35,8 +30,7 @@ const app = express();
 //common middleware
 //ts conversion
 applyMiddleware(middleware, app);
-applyRoutes(controllers, app);
-app.use(users);
+applyRoutes(routes, app);
 
 
 //everything below here with eventually go in controllers
@@ -53,7 +47,7 @@ app.get('/populate', async (req, res) => {
     ).catch(err => {
         console.log(err);
         res
-            .status(500)
+            .status(Number(500))
             .send(`failed to execute query ${err}`);
     });
     res

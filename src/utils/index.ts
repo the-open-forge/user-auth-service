@@ -18,8 +18,8 @@ type Handler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-type Route = {
-  path: string,
+export interface Route {
+  path: string;
   method: string,
   handler: Handler | Handler[]
 };

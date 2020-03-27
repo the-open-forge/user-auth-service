@@ -1,7 +1,8 @@
 import {
     handleBodyRequestParsing,
     handleCors,
-    handleCompression
+    // handleCompression
 } from './common-setup/common-setup'
 
-export default [handleBodyRequestParsing, handleCors, handleCompression];
+// export default [handleBodyRequestParsing, handleCors, handleCompression];
+export default [handleBodyRequestParsing, handleCors];
