@@ -18,7 +18,8 @@ services:
     env_file: .env
     container_name: auth-api
     build: .
-    depends_on: auth-db
+    depends_on:
+      - auth-db
     restart: on-failure
     ports:
       - "5000:5000"
