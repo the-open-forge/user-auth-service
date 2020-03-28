@@ -10,6 +10,11 @@ RUN yarn
 
 COPY . .
 
+RUN yarn build
+
+# COPY . .
+COPY ./dist .
+
 EXPOSE 5000
 
-CMD ["node", "-r", "dotenv/config", "index.js"]
+CMD ["node", "./dist/src/app.js"]

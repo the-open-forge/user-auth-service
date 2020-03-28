@@ -1,9 +1,10 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const DbConfig = {
     pgUser: process.env.PGUSER,
     pgHost: process.env.PGHOST,
-    PgDatabase: process.env.PGDATABASE,
+    pgDatabase: process.env.PGDATABASE,
     pgPort: process.env.PGPORT,
     pgPassword: process.env.PGPASSWORD,
 };

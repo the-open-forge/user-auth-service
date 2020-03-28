@@ -1,10 +1,30 @@
 {
+  "name": "user-auth-service",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Auth Service for next-episode",
+  "license": "MIT",
   "author": "Trevor Henderson",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "dev": "ts-watch --onSuccess \"node ./dist/src/app.js\"",
+    "end-local": "./scripts/stop-and-clean-up-docker-local.sh",
+    "run-local": "./scripts/run-docker-local.sh"
+  },
   "dependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/compression": "^1.7.0",
+    "@types/cors": "^2.8.6",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.3",
+    "@types/pg": "^7.14.3",
+    "@types/pg-pool": "^2.0.2",
+    "@types/uuid": "^7.0.2",
+    "@types/validator": "^12.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "esm": "^3.2.25",
     "express": "^4.17.1",
     "mocha": "^7.1.0",
     "oauth2orize": "^1.11.0",
@@ -15,29 +35,17 @@
     "passport-local": "^1.0.0",
     "passport-oauth2-client-password": "^0.1.2",
     "pg": "^7.18.2",
+    "pg-pool": "^2.0.10",
     "promise": "^8.1.0",
+    "tsc": "^1.20150623.0",
+    "tsc-watch": "^4.2.3",
+    "typescript": "^3.8.3",
     "uuid": "^7.0.1"
   },
-  "scripts": {
-    "start": "node index.js",
-    "test": "mocha ./test/**/*.js --require esm",
-    "run-local": "./scripts/run-docker-local.sh",
-    "end-local": "./scripts/stop-and-clean-up-docker-local.sh" 
-  },
-  "description": "Auth Service for next-episode",
   "devDependencies": {
-    "@types/esm": "3.2.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "chance": "^1.1.4",
     "sinon": "^9.0.0"
-  },
-  "esm": {
-    "await": true
-  },
-  "license": "MIT",
-  "main": "index.js",
-  "name": "user-auth-service",
-  "private": false,
-  "version": "1.0.0"
+  }
 }
