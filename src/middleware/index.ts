@@ -4,5 +4,11 @@ import {
     // handleCompression
 } from './common-setup/common-setup'
 
-// export default [handleBodyRequestParsing, handleCors, handleCompression];
-export default [handleBodyRequestParsing, handleCors];
+import query from './database/query';
+
+const middlewareArray = [handleBodyRequestParsing, handleCors];
+
+export {
+    middlewareArray,
+    query
+};

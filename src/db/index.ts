@@ -1,3 +1,3 @@
-import DbConfig from './db-config';
+import {ClientPool} from './ClientPool';
 
-export default DbConfig;
+export default ClientPool;
