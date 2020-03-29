@@ -2,11 +2,18 @@ import { PoolClient, QueryResult } from 'pg';
 
 import ClientPool from '../../db'
 
-let client;
-const query = async (queryString: string, values: Array<any>) => {
-    client = ClientPool.connect();
-    let feedback;
+interface IQuery<T> {
+     query: (queryString: string, values: Array<T>) => IQuery<T> & T;
+}
 
+const query = async (
+    {queryString = '', values = []} = {queryString: '', values: []},
+)  => {
+    let thisQueryString = queryString;
+    let theseValues = values;
+    let client = ClientPool.connect();
+    let feedback;
+    //Reference Mixins scratch pad
     const result: Promise<QueryResult<any>> =
         client.then((t) => {
             t.query('BEGIN', () => console.log('did not even start begin'));
